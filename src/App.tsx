@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { NewTransactionModal } from "./components/newTransactionModal";
-import { TransactionsContext } from './TransactionsContext'
+import { TransactionsContext, TransactionsProvider } from './TransactionsContext'
 
 import { GlobalStyle } from "./styles/global"
 
@@ -21,7 +21,7 @@ export function App() {
     }
 
   return (
-    <TransactionsContext.Provider value={[]}>
+    <TransactionsProvider>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
       <Dashboard />
 
@@ -30,7 +30,7 @@ export function App() {
         onRequestClose={handleCloseNewTransactionModal}
       />
       <GlobalStyle /> 
-    </TransactionsContext.Provider>
+    </TransactionsProvider>
   );
 } 
 
